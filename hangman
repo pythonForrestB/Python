@@ -1,0 +1,46 @@
+word = str("test")
+
+Wrong = 0
+Right = 0
+
+print("Well howdy cowboy, we're about to hang an innocent man! And if you don't guess the word I'm thinking of, we'll hang him piece by piece till he's dead")
+print("The word has " + str(len(word)) + " letters in!")
+
+LetterBank = ["a","b","c","d","e","f","g",'h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','x','y','z']
+Used = []
+CorrectBank = []
+Correct = ""
+
+while Wrong < 6:
+    LenCheck = True
+    LetterCheck = True
+    Right = 0
+    Answer = str(input())
+    if len(Answer) > 1:
+        print("Only one letter is allowed please follow the rules")
+        LenCheck = False
+    if Answer not in LetterBank and LenCheck == True:
+        print("That's not even a letter")
+        LetterCheck = False
+    if LenCheck and LetterCheck == True:
+        Used.append(Answer)
+        for i in range(0, len(word)):
+            if Answer == word[i]:
+                print("Yeah that's letter: " + str(i+1))
+                Right =+ 1
+                CorrectBank.insert(i,Answer)
+        if Right == 0:
+            Wrong += 1
+            print("Another piece to the hanged man...")
+        print("Here's what you got so far: " + Correct.join(CorrectBank))
+    if len(word) == len(CorrectBank):
+        break
+                            
+
+if Wrong == 6:
+    print("You done killed him")
+
+if len(word) == len(CorrectBank):
+    print("Congrats you got the word which was " + word)
+
+    
